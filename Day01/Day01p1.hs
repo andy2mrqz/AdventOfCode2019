@@ -1,4 +1,4 @@
-module Day01 (day01a, day01b) where
+module Main where
 
 input :: [Int]
 input =
@@ -111,8 +111,6 @@ fuel' :: Int -> Int
 fuel' m = if fuel m < 0 then 0
           else fuel m + fuel' (fuel m)
 
-day01a :: IO()
-day01a = print $ sum $ map fuel input
+main :: IO()
+main = print $ sum $ map fuel input
 
-day01b :: IO()
-day01b = print $ sum $ map fuel' input
