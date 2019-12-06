@@ -107,10 +107,6 @@ input =
 fuel :: Int -> Int
 fuel m = m `div` 3 - 2
 
-fuel' :: Int -> Int
-fuel' m = if fuel m < 0 then 0
-          else fuel m + fuel' (fuel m)
-
 main :: IO()
 main = print $ sum $ map fuel input
 
