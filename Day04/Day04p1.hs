@@ -8,14 +8,10 @@ isOrdered :: [Int] -> Bool
 isOrdered [x] = True
 isOrdered (x:y:xs) = x <= y && isOrdered(y:xs)
 
-hasAdj :: String -> Bool
-hasAdj (_:[]) = False
-hasAdj (x:xs) = (x == head xs) || hasAdj xs
-
 criteria :: String -> Bool
 criteria pw =
     length pw == 6 &&
-    hasAdj pw &&
+    (any (\(a,b) -> a == b) $ zip pw (tail pw)) &&
     (isOrdered $ map digitToInt pw)
 
 main = print $ length $ filter criteria input
