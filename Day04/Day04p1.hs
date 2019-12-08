@@ -10,8 +10,7 @@ isOrdered (x:y:xs) = x <= y && isOrdered(y:xs)
 
 criteria :: String -> Bool
 criteria pw =
-    length pw == 6 &&
-    (any (\g -> (length g) > 1) $ L.group pw) &&
+    (any (>1) . map length . L.group $ pw) &&
     (isOrdered pw)
 
 main = print $ length $ filter criteria input
