@@ -1,16 +1,10 @@
 module Main where
 
-import qualified Data.List as L
-
-input = map show [278384..824795]
-
-isOrdered :: Ord a => [a] -> Bool
-isOrdered [x] = True
-isOrdered (x:y:xs) = x <= y && isOrdered(y:xs)
+import Data.List (group, sort)
 
 criteria :: String -> Bool
 criteria pw =
-    (any (>1) . map length . L.group $ pw) &&
-    (isOrdered pw)
+    (any (>1) $ map length $ group pw) &&
+    (pw == sort pw)
 
-main = print $ length $ filter criteria input
+main = print $ length $ filter criteria $ map show [278384..824795]
